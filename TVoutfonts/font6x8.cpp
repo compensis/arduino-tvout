@@ -138,7 +138,7 @@ PROGMEM const unsigned char font6x8[] = {
 	0b00010000,
 	0b00000000,
 	0b00000000,
-	// 47 Backslash /
+	// 47 Slash /
 	0b00000000,
 	0b00001000,
 	0b00010000,
