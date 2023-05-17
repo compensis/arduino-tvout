@@ -31,6 +31,8 @@
 #include "spec/asm_macros.h"
 #include "spec/hardware_setup.h"
 
+static void inline wait_until(uint8_t time);
+
 //#define REMOVE6C
 //#define REMOVE5C
 //#define REMOVE4C
