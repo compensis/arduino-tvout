@@ -29,7 +29,9 @@
 
 #define BUFFER_SIZE 64
 
-rbuffer rxbuffer = {0,0,0};
+namespace {
+  rbuffer rxbuffer = {0,0,0};
+}
 
 void USART_recieve() {
 #if defined ( UDR0 )
