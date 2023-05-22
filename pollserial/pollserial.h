@@ -36,7 +36,7 @@ typedef struct {
 //define a void function() return type.
 typedef void (*pt2Funct)();
 
-class pollserial : public Print {
+class Pollserial : public Print {
   public:
     pt2Funct begin(long);
     void end();

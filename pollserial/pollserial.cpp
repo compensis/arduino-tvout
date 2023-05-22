@@ -1,5 +1,5 @@
 /*
-  pollserial.cpp Heavily modified version of:
+  Pollserial.cpp Heavily modified version of:
 
   HardwareSerial.cpp - Hardware serial library for Wiring
   Copyright (c) 2006 Nicholas Zambetti.  All right reserved.
@@ -25,7 +25,7 @@
 
 #include <avr/io.h>
 #include <stdlib.h>
-#include "pollserial.h"
+#include "Pollserial.h"
 
 #define BUFFER_SIZE 64
 
@@ -51,7 +51,7 @@ void USART_recieve() {
 #endif
 }
 
-pt2Funct pollserial::begin(long baud) {
+pt2Funct Pollserial::begin(long baud) {
   uint16_t baud_setting;
   bool use_u2x;
   
@@ -101,16 +101,16 @@ pt2Funct pollserial::begin(long baud) {
   return &USART_recieve;
 }
 
-void pollserial::end() {
+void Pollserial::end() {
   UCSR0B &= ~(_BV(RXEN0) | _BV(TXEN0));
   free(rxbuffer.buffer);
 }
 
-uint8_t pollserial::available() {
+uint8_t Pollserial::available() {
   return (BUFFER_SIZE + rxbuffer.head - rxbuffer.tail) & (BUFFER_SIZE-1);
 }
 
-int pollserial::read() {
+int Pollserial::read() {
   if (rxbuffer.head == rxbuffer.tail)
     return -1;
   else {
@@ -124,11 +124,11 @@ int pollserial::read() {
   }
 }
 
-void pollserial::flush() {
+void Pollserial::flush() {
   rxbuffer.head = rxbuffer.tail;
 }
 
-size_t pollserial::write(uint8_t c) {
+size_t Pollserial::write(uint8_t c) {
 #if defined ( UDR0 )
   while (!((UCSR0A) & _BV(UDRE0)));
   UDR0 = c;
